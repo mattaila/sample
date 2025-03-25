@@ -10,7 +10,7 @@
     <div class="mt-3">
         <div th:replace="~{components/show_notification :: show_notification}"></div>
         <div>
-            <a th:href="@{/todo/createForm}" class="btn btn-secondary">
+            <a id="create" th:href="@{/todo/createForm}" class="btn btn-secondary">
                 <i class="bi bi-plus-square"></i>
             </a>
         </div>
@@ -41,7 +41,7 @@
                         </div>
                     </td>
                     <td>
-                        <a th:href="@{/todo/edit/__${todo.id}__}" class="btn btn-outline-success">
+                        <a id="edit" th:href="@{/todo/edit/__${todo.id}__}" class="btn btn-outline-success">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                         
