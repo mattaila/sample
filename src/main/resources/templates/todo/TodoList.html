@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+      th:replace="~{components/template :: layout(~{::title},~{::body/content()})}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{text.todo.title}"></title>
+</head>
+<body>
+    <div class="mt-3">
+        <div th:replace="~{components/show_notification :: show_notification}"></div>
+        <div>
+            <a th:href="@{/todo/createForm}" class="btn btn-secondary">
+                <i class="bi bi-plus-square"></i>
+            </a>
+        </div>
+        <br>
+        <table class="table table-hover">
+            <tr class="table-primary">
+                <th>#</th>
+                <th th:text="#{text.todo.title}"></th>
+                <th th:text="#{text.todo.description}"></th>
+                <th th:text="#{text.todo.startDate}"></th>
+                <th th:text="#{text.todo.deadline}"></th>
+                <th th:text="#{text.todo.progress}"></th>
+                <th></th>
+            </tr>
+            <div th:if="${todos != null && #lists.size(todos) != 0}"></div>
+                <tr class="align-middle" th:each="todo:${todos}">
+                    <td th:text="${todo.id}"></td>
+                    <td th:text="${todo.title}"></td>
+                    <td th:text="${todo.description}"></td>
+                    <td th:text="${todo.startDate}"></td>
+                    <td th:text="${todo.deadline}"></td>
+                    <td>
+                        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-success"
+                                th:style="'width:' + ${todo.progress} + '%'" 
+                                th:aria-valuenow="${todo.progress}"
+                                th:text="${todo.progress} + '%'"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <a th:href="@{/todo/edit/__${todo.id}__}" class="btn btn-outline-success">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        
+                    </td>
+                </tr>
+            </div>
+        </table>
+    </div>
+</body>
+</html>

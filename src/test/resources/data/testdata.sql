@@ -1,0 +1,29 @@
+INSERT INTO TODO(
+    TITLE,
+    DESCRIPTION,
+    START_DATE,
+    DEADLINE,
+    PROGRESS
+) VALUES('教育カリキュラム作成', '研修用資料作成', '2025-01-01', '2025-03-01', 30);
+INSERT INTO TODO(
+    TITLE,
+    DESCRIPTION,
+    START_DATE,
+    DEADLINE,
+    PROGRESS
+) VALUES('TypeScript勉強', '', '2025-01-01', '2025-05-01', 45);
+
+INSERT INTO ACCOUNT(
+    USERNAME,
+    PASSWORD,
+    ROLE,
+    ENABLED,
+    INVALID_DATE
+) VALUES('admin', '$2a$08$h0qbchHHG86Yd6xb8VImjuuaIAnfls7.9RLwcxJpVYfnsEiHDXTZG', 'ADMIN', true, '2099-01-01');
+INSERT INTO ACCOUNT(
+    USERNAME,
+    PASSWORD,
+    ROLE,
+    ENABLED,
+    INVALID_DATE
+) VALUES('user', '$2a$08$h0qbchHHG86Yd6xb8VImjuuaIAnfls7.9RLwcxJpVYfnsEiHDXTZG', 'USER', true, '2099-01-01');

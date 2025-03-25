@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+    <header>
+        <div th:fragment="header" th:remove="tag">
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#" th:text="#{text.common.system}"></a>
+                    
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                            <span th:text="${#authentication.name}"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                            <form th:action="@{/logout}" method="post">
+                                <button type="submit" class="dropdown-item">
+                                    <span th:text="#{text.common.logout}"></span>
+                                </button>
+                            </form>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+
+                
+
+                </div>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

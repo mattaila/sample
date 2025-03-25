@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div th:fragment="show_notification">
+        <div th:if="${notification != null}">
+            <!-- INFO -->
+            <div th:if="${notification.level=='I'}">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span th:text="${notification.message}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+
+            <!-- ERROR -->
+            <div th:if="${notification.level=='E'}">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span th:text="${notification.message}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+
+            <!-- WARNING -->
+            <div th:if="${notification.level=='W'}">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <span th:text="${notification.message}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+
+    </div>
+</body>
+</html>

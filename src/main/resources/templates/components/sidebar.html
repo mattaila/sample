@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<title>footer</title>
+</head>
+<body>
+    <div th:fragment="sidebar" th:remove="tag">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li sec:authorize="hasRole('ADMIN')">
+                    <a th:href="@{/account}" class="nav-link px-0 align-middle">
+                        <i class="bi bi-person"></i> <span class="ms-1 d-none d-sm-inline" th:text="#{text.common.menu.user}"></span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/todo}" class="nav-link px-0 align-middle">
+                        <i class="bi bi-list-check"></i> <span class="ms-1 d-none d-sm-inline" th:text="#{text.common.menu.todo}"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+</body>
+</html>

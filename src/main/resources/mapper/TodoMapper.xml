@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sample.repository.TodoRepository">
+    <resultMap id="BaseResultMap" type="com.example.sample.domain.todo.dto.Todo">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="description" jdbcType="VARCHAR" property="description" />
+        <result column="start_date" jdbcType="DATE" property="startDate" />
+        <result column="deadline" jdbcType="DATE" property="deadline" />
+        <result column="progress" jdbcType="INTEGER" property="progress" />
+    </resultMap>
+  
+    <sql id="Base_Column_List">
+        id, title, description, start_date, deadline, progress
+    </sql>
+  
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from todo
+        order by id
+    </select>
+
+    <select id="selectOne" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from todo where id = #{id}
+    </select>
+
+    <select id="countAll" resultType="java.lang.Long">
+        select count(*) from todo
+    </select>
+
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.sample.domain.todo.dto.Todo" useGeneratedKeys="true">
+
+        insert into todo (
+            title,
+            description,
+            start_date,
+            deadline,
+            progress
+        ) values (
+            #{title,jdbcType=VARCHAR},
+            #{description,jdbcType=VARCHAR},
+            #{startDate,jdbcType=DATE}, 
+            #{deadline,jdbcType=DATE}, 
+            #{progress,jdbcType=INTEGER}
+        )
+    </insert>
+  
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from todo
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="update" parameterType="com.example.sample.domain.todo.dto.Todo">
+        update todo
+            set title = #{title,jdbcType=VARCHAR},
+            description = #{description,jdbcType=VARCHAR},
+            start_date = #{startDate,jdbcType=DATE},
+            deadline = #{deadline,jdbcType=DATE},
+            progress = #{progress,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

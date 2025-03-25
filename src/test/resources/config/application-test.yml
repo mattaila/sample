@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 1MB
+
+    messages:
+        basename: messages/todo,messages/common,messages/account
+
+    datasource:
+        url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL
+        driver-class-name: org.h2.Driver
+        username: sa
+        password: 
+
+    data:
+        web:
+            pageable:
+                default-page-size: 10
+    sql:
+        init:
+            mode: always
+            encoding: UTF-8 
+            schema-locations: classpath*:/data/schema.sql 
+            data-locations: classpath*:/data/testdata.sql
+mybatis:
+    mapper-locations: classpath*:/mapper/*.xml

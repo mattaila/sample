@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+<title th:text="#{text.common.login}"></title>
+</head>
+<link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"></link>
+<link th:href="@{/webjars/bootstrap-icons/1.10.5/font/bootstrap-icons.css}" rel="stylesheet"></link>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title text-center">Login</h3>
+                </div>
+                <div class="card-body">
+                  <div th:if="${param.error}"  th:text="#{message.common.login.fail}" class="alert alert-danger mt-3"></div>
+                  <div th:if="${param.logout}" th:text="#{message.common.logout.success}" class="alert alert-success mt-3"></div>
+              
+                  <form th:action="@{/login}" method="post">
+                    <div class="mb-3">
+                      <label for="username" th:text="#{text.common.login.username}"></label>
+                      <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" th:text="#{text.common.login.password}"></label>
+                      <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                      <button type="submit" th:text="#{text.common.login}" class="btn btn-primary btn-block"></button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

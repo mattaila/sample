@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sample.repository.AccountRepository">
+    <resultMap id="BaseResultMap" type="com.example.sample.domain.account.dto.Account">
+        <id column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="role" jdbcType="VARCHAR" property="role" />
+        <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
+        <result column="invalid_date" jdbcType="DATE" property="invalidDate" />
+    </resultMap>
+  
+    <sql id="Base_Column_List">
+        username, password, role, enabled, invalid_date
+    </sql>
+  
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from account
+        order by username
+    </select>
+
+    <select id="selectOne" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from account where username = #{userName,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
